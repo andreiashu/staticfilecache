@@ -26,14 +26,17 @@ SFC is a class that implements the "DrupalCacheInterface" Drupal Core interface.
 
 ### Settings exposed:
 ```php
-// include the required files for the static file cache and the memcache fallback
-$conf['cache_backends'][] = 'sites/all/modules/staticfilecache/DrupalStaticFileCache.inc';
-$conf['cache_backends'][] = 'sites/all/modules/memcache/memcache.inc';
+// required files for the static file cache and memcache fallback
+$conf['cache_backends'] = array(
+  'sites/all/modules/staticfilecache/DrupalStaticFileCache.inc',
+  'sites/all/modules/memcache/memcache.inc',
+);
 
-// static file cache will handle all the cache_(get/set/clear) calls
+// static file cache will handle all the cache_* calls
 $conf['cache_default_class'] = 'DrupalStaticFileCache';
-// set the fallback to memcache. If this option is not specified all the cache_* calls that
-// do not match a whitelisted cache identifier will be passed to DrupalFakeCache!
+// set the fallback to memcache. If this option is not specified
+// all the cache_* calls that do not match a whitelisted
+// cache identifier will be passed to DrupalFakeCache!
 $conf['cache_staticfile_fallback'] = 'MemCacheDrupal';
 
 $conf += array(
