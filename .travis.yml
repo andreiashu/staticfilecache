@@ -6,4 +6,4 @@ php:
   - 5.5
   - hhvm
 
-script: phpunit --coverage-text
+script: phpunit --coverage-text .
