@@ -38,21 +38,25 @@ $conf['cache_staticfile_fallback'] = 'MemCacheDrupal';
 
 $conf += array(
   // where will you store the cached files
-  // most probably you don't want this in the files directory but somewhere
-  // in your repository
+  // most probably you don't want this in the files directory
+  // but somewhere in your repository
   'cache_staticfile_cache_dir' => ABSOLUTE_PATH_TO_STATIC_FILE_DIRECTORY,
   // list of whitelisted cache identifiers. Supports regex
   // where there is a match this happens:
-  //   - if the file exists in the 'cache_staticfile_cache_dir' directory return that
+  //   - if the file exists in the 'cache_staticfile_cache_dir'
+  //     directory return that
   //   - else returns FALSE
-  // where there isn't a match then the call is passed to the "cache_staticfile_fallback" class
+  // where there isn't a match then the call is passed to
+  // the "cache_staticfile_fallback" class
   'cache_staticfile_whitelist_cids' => array(
     // format is [BIN]-[CID] where the ":" are replaced with "_"
     'cache_bootstrap-module_implements',
-    // regex: match CIDs starting with "entity_info" from the Bin "cache"
+    // regex: match CIDs starting with "entity_info" from
+    // the Bin "cache"
     '/cache-entity_info_.+/',
   ),
-  // defaults to TRUE. if identifier is whitelisted whether SFC should allow cache_get on it
+  // defaults to TRUE. if identifier is whitelisted whether SFC
+  // should allow cache_get on it
   'cache_staticfile_get_allowed' => TRUE,
 
   // defaults to FALSE. if identifier is whitelisted whether SFC
@@ -78,6 +82,7 @@ This is different from SFC because:
 * SFC was designed to specifically cache forever: ie. no clear on Cron, or drush cc all;
 * SFC has more granularity it it's whitelisting approach: it supports Bins and Cache IDs as well as regex identifiers;
 * SFC is meant to be just a Cache Class, not a module in itself;
+* SFC allows for a fallback caching layer therefore you can have cache items from the same Bin that can use different caching layers;
 
 Depending on your needs, File Cache module might be more appropriate.
 
