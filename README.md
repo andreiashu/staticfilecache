@@ -37,6 +37,9 @@ $conf['cache_default_class'] = 'DrupalStaticFileCache';
 $conf['cache_staticfile_fallback'] = 'MemCacheDrupal';
 
 $conf += array(
+  // where will you store the cached files
+  // most probably you don't want this in the files directory but somewhere
+  // in your repository
   'cache_staticfile_cache_dir' => ABSOLUTE_PATH_TO_STATIC_FILE_DIRECTORY,
   // list of whitelisted cache identifiers. Supports regex
   // where there is a match this happens:
